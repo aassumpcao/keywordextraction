@@ -1,1 +1,1 @@
-from keywordextraction import *
+from .keywordextraction import *
