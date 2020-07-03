@@ -33,6 +33,7 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 
 >>> summarizer.wordrank_extract(nytimes_wiki, top_n=5)
 
+
 >>> summarizer.fasttext_extract(nytimes_wiki)
 ['newspaper']
 ```
