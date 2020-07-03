@@ -82,7 +82,11 @@ class Summarizer:
         kwargs = {'key': lambda x: x[1], 'reverse': True}
         scores = [sorted(score, **kwargs) for score in scores]
         scores = [score[:top_n] for score in scores]
-        return scores
+
+        if len(scores) == 1:
+            return scores[0]
+        else:
+            return scores
 
     # create internal functions for wordrank extraction
     def _sentence_segment(self, text, lower=True):
@@ -189,8 +193,8 @@ class Summarizer:
 
         kwargs = {'key': lambda x: x[1], 'reverse': True}
         node_weight = sorted(node_weight, **kwargs)
-
-        return node_weight
+        scores = [score[:top_n] for score in node_weight]
+        return scores
 
     # create external method to report wordrank
     def wordrank_extract(self, texts, top_n=2):
@@ -204,8 +208,10 @@ class Summarizer:
             self._wordrank_extract(text) for text in texts
         ]
 
-        # return output
-        return output
+        if len(output) == 1:
+            return output[0]
+        else:
+            return output
 
     # format vocab to use in distance function
     def _prepare_spacy_vocab(self):
