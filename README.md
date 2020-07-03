@@ -17,10 +17,10 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 >>> summarizer = keywordextraction.Summarizer(preprocess=True)
 
 >>> summarizer.tfidf_extract(text)
-[[('articles', 0.5773502691896258), ('books', 0.5773502691896258)]]
+[('articles', 0.5773502691896258), ('books', 0.5773502691896258)]]
 
 >>> summarizer.wordrank_extract(text)
-[[('newspaper', 1.1275), ('books', 0.93625), ('articles', 0.93625)]]
+[('newspaper', 1.1275), ('books', 0.93625)]
 
 >>> summarizer.fasttext_extract(text)
 ['articles']
@@ -32,7 +32,7 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 [('newspaper', 0.42857142857142855), ('times', 0.42857142857142855), ('new', 0.2857142857142857), ('paper', 0.2857142857142857), ('york', 0.2857142857142857)]
 
 >>> summarizer.wordrank_extract(nytimes_wiki, top_n=5)
-
+[('times', 1.639625), ('newspaper', 1.5199166666666666), ('hand', 1.3612499999999996), ('paper', 1.180625), ('york', 1.1338749999999997)]
 
 >>> summarizer.fasttext_extract(nytimes_wiki)
 ['newspaper']
