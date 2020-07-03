@@ -150,7 +150,7 @@ class Summarizer:
         return g_norm
 
     # create method for WordRank extraction
-    def _wordrank_extract(self, text, window_size=2, lower=True):
+    def _wordrank_extract(self, text, top_n window_size=2, lower=True):
 
         # create nlp object
         doc = self.nlp(text)
@@ -205,7 +205,7 @@ class Summarizer:
 
         # extract keywords
         output = [
-            self._wordrank_extract(text) for text in texts
+            self._wordrank_extract(text, top_n) for text in texts
         ]
 
         if len(output) == 1:
