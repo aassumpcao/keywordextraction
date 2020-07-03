@@ -13,6 +13,6 @@ nytimes_wiki = 'The New York Times (sometimes abbreviated as the NYT and NYTimes
 
 summarizer.tfidf_extract(nytimes_wiki, top_n=5)
 summarizer.wordrank_extract(nytimes_wiki, top_n=5)
-summarizer.fasttext_extract(nytimes_wiki, top_n=5)
+summarizer.fasttext_extract(nytimes_wiki)
 
 

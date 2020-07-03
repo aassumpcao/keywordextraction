@@ -193,7 +193,7 @@ class Summarizer:
 
         kwargs = {'key': lambda x: x[1], 'reverse': True}
         node_weight = sorted(node_weight, **kwargs)
-        scores = [score[:top_n] for score in node_weight]
+        scores = node_weight[:top_n]
         return scores
 
     # create external method to report wordrank
