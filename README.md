@@ -9,7 +9,7 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 ```
 
 ## Usage
-```
+```python
 >>> import keywordextraction
 >>> text = 'I like reading books more than reading newspaper articles.'
 >>> summarizer = keywordextraction.Summarizer(preprocess=True)
