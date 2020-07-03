@@ -26,7 +26,7 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 ['articles']
 ```
 
-In methods tfidf_extract() and wordrank_extract(), the summarizer returns the scores for each keyword. You can ask for as many keywords as there are in the text. Method fasttext_extract() does not return more than one keyword neither any score. These are set aside for future improvements.
+In methods ```tfidf_extract()``` and ```wordrank_extract()```, the summarizer returns the scores for each keyword. You can ask for as many keywords as there are in the text. You can also set different arguments to the ```Summarizer()``` class as you see fit. Method ```fasttext_extract()``` does not return more than one keyword neither any score. These are set aside for future improvements.
 
 ## Improvements
 - Increase speed of Word2Vec extraction;
