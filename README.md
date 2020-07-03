@@ -11,12 +11,17 @@ pip install git+https://github.com/aassumpcao/keywordextraction
 ## Usage
 ```python
 >>> import keywordextraction
+>>> 
 >>> text = 'I like reading books more than reading newspaper articles.'
+>>> 
 >>> summarizer = keywordextraction.Summarizer(preprocess=True)
+>>> 
 >>> summarizer.tfidf_extract(text)
 [[('articles', 0.5773502691896258), ('books', 0.5773502691896258)]]
+>>>
 >>> summarizer.wordrank_extract(text)
 [[('newspaper', 1.1275), ('books', 0.93625), ('articles', 0.93625)]]
+>>>
 >>> summarizer.fasttext_extract(text)
 ['articles']
 ```
