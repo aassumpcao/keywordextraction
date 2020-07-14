@@ -15,7 +15,8 @@ class Summarizer:
 
     def __init__(
             self, preprocess=False, stopwords=None, pos=['NOUN', 'PROPN'],
-             d=0.85, min_diff=1e-5, steps=10, node_weight=None
+             d=0.85, min_diff=1e-5, steps=10, node_weight=None,
+             nlp=spacy.load('en_core_web_lg')
         ):
 
         # define class objects
@@ -26,7 +27,7 @@ class Summarizer:
         self.min_diff = min_diff
         self.steps = steps
         self.node_weight = node_weight
-        self.nlp = spacy.load('en_core_web_lg')
+        self.nlp = nlp
 
     # create internal method for processing text
     def _preprocess(self, text):
@@ -82,11 +83,7 @@ class Summarizer:
         kwargs = {'key': lambda x: x[1], 'reverse': True}
         scores = [sorted(score, **kwargs) for score in scores]
         scores = [score[:top_n] for score in scores]
-
-        if len(scores) == 1:
-            return scores[0]
-        else:
-            return scores
+        return scores
 
     # create internal functions for wordrank extraction
     def _sentence_segment(self, text, lower=True):
@@ -150,7 +147,7 @@ class Summarizer:
         return g_norm
 
     # create method for WordRank extraction
-    def _wordrank_extract(self, text, top_n, window_size=2, lower=True):
+    def _wordrank_extract(self, text, window_size=2, lower=True):
 
         # create nlp object
         doc = self.nlp(text)
@@ -193,8 +190,8 @@ class Summarizer:
 
         kwargs = {'key': lambda x: x[1], 'reverse': True}
         node_weight = sorted(node_weight, **kwargs)
-        scores = node_weight[:top_n]
-        return scores
+
+        return node_weight
 
     # create external method to report wordrank
     def wordrank_extract(self, texts, top_n=2):
@@ -205,13 +202,11 @@ class Summarizer:
 
         # extract keywords
         output = [
-            self._wordrank_extract(text, top_n) for text in texts
+            self._wordrank_extract(text) for text in texts
         ]
 
-        if len(output) == 1:
-            return output[0]
-        else:
-            return output
+        # return output
+        return output
 
     # format vocab to use in distance function
     def _prepare_spacy_vocab(self):
